@@ -1,0 +1,15 @@
+[project]
+name = "loop-key"
+version = "0.1.0"
+description = "LoopKey - 自动循环按键宏工具，允许用户自定义按键序列并无限循环执行"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "keyboard>=0.13.5",
+    "pyautogui>=0.9.54",
+    "sv-ttk>=2.6.1",
+]
+
+[[tool.uv.index]]
+url = "https://pypi.tuna.tsinghua.edu.cn/simple"
+default = true
