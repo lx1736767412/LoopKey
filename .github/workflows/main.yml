@@ -20,11 +20,15 @@ jobs:
           python-version: '3.12'
           cache: 'pip'
 
-      - name: Install Dependencies
-        run: |
-          pip install nuitka==4.0.5 sv-ttk
-          # 如果你有 requirements.txt，执行下面这句：
-          # pip install -r requirements.txt
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          version: "latest"
+
+      - name: Install Dependencies with uv
+        run:
+          uv sync
+          uv pip install nuitka==4.0.5
 
       - name: Build with Nuitka
         run: |
@@ -34,12 +38,11 @@ jobs:
           --windows-disable-console `
           --windows-icon-from-ico=assets/icon.ico `
           --output-filename=LoopKey `
-          --output-dir=dist `
           main.py
 
       - name: Compress Build Folder
         run: |
-          Compress-Archive -Path dist/LoopKey.dist/* -DestinationPath LoopKey.zip
+          Compress-Archive -Path main.dist/* -DestinationPath LoopKey.zip
 
       - name: Create Release
         uses: softprops/action-gh-release@v2
@@ -47,4 +50,4 @@ jobs:
         with:
           files: LoopKey.zip
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.ACTION_TOKEN }}
