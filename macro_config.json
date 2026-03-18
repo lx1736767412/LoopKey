@@ -1,20 +1,18 @@
 {
-    "tasks": [
-        {
-            "key": "w",
-            "display": "W",
-            "dur": 0.1,
-            "delay": 0.1
-        },
-        {
-            "key": "shift",
-            "display": "SHIFT",
-            "dur": 0.1,
-            "delay": 0.1
-        }
-    ],
-    "loop_min": "2.0",
-    "loop_max": "5.0",
-    "default_dur": "0.1",
-    "default_delay": "0.1"
+  "tasks": [
+    {
+      "key": "W",
+      "duration": 0.1,
+      "delay": 0.1
+    },
+    {
+      "key": "shift",
+      "duration": 0.1,
+      "delay": 0.1
+    }
+  ],
+  "min_pause": 3.0,
+  "max_pause": 10.0,
+  "default_duration": 0.1,
+  "default_delay": 0.1
 }
